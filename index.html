@@ -7,12 +7,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quizapp</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
     <script src="script.js"></script>
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
+    <!-- Start Container -->
+    <div class="container">
+        <!-- Start Outline -->
+        <div class="start-outline">
+            <div class="headline">
+                <h1>Welcome to the awsome Quiz</h1>
+                <h5>Ready for the challange?</h5>
+            </div>
+            <div class="button-container">
+                <button>
+                    Let´s go!
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- Card Container -->
+    <div class="container d-none">
+        <!-- Card Outline -->
+        <div class="outline">
+            <!-- Card Topsection -->
+            <div class="topsection margin-12">
+                <img src="./img/bg1.png">
+            </div>
+            <!-- Card Mainsection -->
+            <div class="mainsection">
+                <div class="card-body">
+                    <div>
+                        <h3>Frage</h3>
+                    </div>
+                    <div class="box">
+                        Antwort 1
+                    </div>
+                    <div class="box">
+                        Antwort 2
+                    </div>
+                    <div class="box">
+                        Antwort 3
+                    </div>
+                    <div class="box">
+                        Antwort 4
+                    </div>
+                </div>
+            </div>
+            <!-- Card Bottomsection -->
+            <div class="bottomsection">
+                <div class="margin-12">
+                    Frage 1 von 10
+                </div>
+                <div class="margin-12">
+                    <button disabled>
+                        Nächste Frage
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 
