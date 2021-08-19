@@ -44,7 +44,7 @@ button:hover {
 .start-outline {
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-radius: 8px;
-    width: 50%;
+    width: 55%;
     height: 190px;
     background-color: white;
     position: relative;
@@ -96,4 +96,10 @@ button:hover {
 
 .wrong-answer {
     background-color: red;
+}
+
+.button-box {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
 }

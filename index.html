@@ -18,7 +18,7 @@
 <body onload="init()">
     <!-- Container -->
     <div class="container">
-        <!-- Start Outline -->
+        <!-- Start -->
         <div id="start-screen" class="start-outline">
             <div class="headline">
                 <h1>Welcome to the awsome Quiz</h1>
@@ -30,7 +30,8 @@
                 </button>
             </div>
         </div>
-        <!-- Card Outline -->
+
+        <!-- Game -->
         <div id="game-screen" class="outline d-none">
             <!-- Card Topsection -->
             <div class="topsection margin-12">
@@ -64,6 +65,77 @@
                 <div class="margin-12">
                     <button id="button" onclick="nextQuestion()" disabled>
                         Nächste Frage
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Endscreen -->
+        <div id="endscreen" class="outline d-none">
+            <!-- Endscreen Topsection -->
+            <div class="topsection margin-12">
+                <img src="./img/completed.png">
+            </div>
+            <!-- Endscreen Mainsection -->
+            <div class="mainsection">
+                <div class="card-body">
+                    <h2>
+                        Quiz beendet!
+                    </h2>
+                    <div>
+                        Du hast <b id="amountRightAnswer">xxx</b> von <b id="maxQuestions">xxx</b> Fragen richtig beantwortet.
+                    </div>
+                    <div class="button-box">
+                        <input type="text" placeholder="Name">
+                        <button>
+                            Hinzufügen
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Endscreen Bottomsection -->
+            <div class="bottomsection">
+                <div class="margin-12">
+                    <button id="showLeaderboard" onclick="showLeaderboard()">
+                        Leaderboard
+                    </button>
+                </div>
+                <div class="margin-12">
+                    <button id="restart" onclick="restart()">
+                        Neuer Versuch
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Leaderboard -->
+        <div id="leaderboard" class="outline d-none">
+            <!-- Leaderboard Topsection -->
+            <div class="topsection margin-12">
+                <h1>
+                    Leaderboard
+                </h1>
+            </div>
+            <!-- Leaderboard Mainsection -->
+            <div class="mainsection">
+                <div class="card-body">
+                    <div>
+                        <h2>
+                            Leaderboard
+                        </h2>
+                    </div>
+                    <div>
+                        <table id="leaderboard-table">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Leaderboard Bottomsection -->
+            <div class="bottomsection">
+                <div class="margin-12">
+                    <button id="restart" onclick="restart()">
+                        Neuer Versuch
                     </button>
                 </div>
             </div>

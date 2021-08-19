@@ -94,6 +94,18 @@ function init() {
 }
 
 function loadquiz() {
+    if (gameIsOver()) {
+        showEndScreen();
+    } else {
+        showQuestions();
+    }
+}
+
+function gameIsOver() {
+    return currentQuestion >= questions.length;
+}
+
+function showQuestions() {
     let question = questions[currentQuestion];
     document.getElementById('current-question').innerHTML = currentQuestion + 1;
     document.getElementById('questiontext').innerHTML = question['question'];
@@ -135,4 +147,16 @@ function resetAnswer() {
     document.getElementById('answer-3').classList.remove('wrong-answer');
     document.getElementById('answer-4').classList.remove('right-answer');
     document.getElementById('answer-4').classList.remove('wrong-answer');
+}
+
+function showEndScreen() {
+    document.getElementById('endscreen').classList.remove('d-none')
+    document.getElementById('game-screen').classList.add('d-none');
+    document.getElementById('amountRightAnswer').innerHTML = rightQuestions;
+    document.getElementById('maxQuestions').innerHTML = questions.length;
+}
+
+function showLeaderboard() {
+    document.getElementById('leaderboard').classList.remove('d-none')
+    document.getElementById('endscreen').classList.add('d-none');
 }
