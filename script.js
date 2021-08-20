@@ -78,7 +78,12 @@ let questions = [{
         "answer_4": "Seine enorme Geschwindigkeit von 70 km/h.",
         "right_answer": 2,
     },
-]
+];
+
+let leaderboard = [{
+    "name": "Moritz",
+    "score": 5,
+}];
 
 let rightQuestions = 0;
 let currentQuestion = 0;
@@ -159,4 +164,39 @@ function showEndScreen() {
 function showLeaderboard() {
     document.getElementById('leaderboard').classList.remove('d-none')
     document.getElementById('endscreen').classList.add('d-none');
+
+    for (let i = 0; i < leaderboard.length; i++) {
+        const leader = leaderboard[i]
+        let scoreboard = document.getElementById('leaderboardTable');
+
+        scoreboard.innerHTML += createTable(leader);
+    }
+}
+
+function createTable(leader) {
+    return `
+    <tr>
+        <td>
+        ${leader['name']}
+        </td>
+        <td>
+        ${leader['score']}
+        </td>
+    </tr>
+`
+}
+
+function addLeaderboard() {
+    document.getElementById('name').value;
+
+}
+
+function restart() {
+    document.getElementById('game-screen').classList.remove('d-none');
+    document.getElementById('endscreen').classList.add('d-none');
+    document.getElementById('leaderboard').classList.add('d-none');
+    rightQuestions = 0;
+    currentQuestion = 0;
+    document.getElementById('all-questions').innerHTML = questions.length;
+    showQuestions();
 }
