@@ -103,6 +103,7 @@ function loadquiz() {
         showEndScreen();
     } else {
         showQuestions();
+        updateProcessBar();
     }
 }
 
@@ -123,17 +124,33 @@ function showQuestions() {
 function answer(id) {
     let question = questions[currentQuestion];
     let selectetAnswer = id.slice(-1);
-    //    let idRightAnswer = `answer_${question['right_answer']}`;
+    let idRightAnswer = `answer-${question['right_answer']}`;
 
     if (selectetAnswer == question['right_answer']) {
         document.getElementById(id).classList.add('right-answer');
         rightQuestions++;
+        buttonNo();
     } else {
         document.getElementById(id).classList.add('wrong-answer');
-        //        document.getElementById(idRightAnswer).classList.add('right-answer');
+        document.getElementById(idRightAnswer).classList.add('right-answer');
+        buttonNo();
     };
 
     document.getElementById('button').disabled = false;
+}
+
+function buttonNo() {
+    document.getElementById('answer-1').disabled = true;
+    document.getElementById('answer-2').disabled = true;
+    document.getElementById('answer-3').disabled = true;
+    document.getElementById('answer-4').disabled = true;
+}
+
+function buttonYes() {
+    document.getElementById('answer-1').disabled = false;
+    document.getElementById('answer-2').disabled = false;
+    document.getElementById('answer-3').disabled = false;
+    document.getElementById('answer-4').disabled = false;
 }
 
 function nextQuestion() {
@@ -152,6 +169,7 @@ function resetAnswer() {
     document.getElementById('answer-3').classList.remove('wrong-answer');
     document.getElementById('answer-4').classList.remove('right-answer');
     document.getElementById('answer-4').classList.remove('wrong-answer');
+    buttonYes();
 }
 
 function showEndScreen() {
@@ -164,9 +182,10 @@ function showEndScreen() {
 function showLeaderboard() {
     document.getElementById('leaderboard').classList.remove('d-none')
     document.getElementById('endscreen').classList.add('d-none');
+    let sortedLeaderboard = leaderboard.sort((e1, e2) => e2.score - e1.score);
 
-    for (let i = 0; i < leaderboard.length; i++) {
-        const leader = leaderboard[i]
+    for (let i = 0; i < sortedLeaderboard.length; i++) {
+        const leader = sortedLeaderboard[i]
         let scoreboard = document.getElementById('leaderboardTable');
 
         scoreboard.innerHTML += createTable(leader);
@@ -187,8 +206,11 @@ function createTable(leader) {
 }
 
 function addLeaderboard() {
-    document.getElementById('name').value;
-
+    leaderboard.push({
+        name: document.getElementById('name').value,
+        score: rightQuestions,
+    }, );
+    showLeaderboard();
 }
 
 function restart() {
@@ -199,4 +221,11 @@ function restart() {
     currentQuestion = 0;
     document.getElementById('all-questions').innerHTML = questions.length;
     showQuestions();
+}
+
+function updateProcessBar() {
+    let percent = (currentQuestion + 1) / questions.length;
+    percent = Math.round(percent * 100);
+    document.getElementById('progress-bar').innerHTML = `${percent}%`;
+    document.getElementById('progress-bar').style.width = `${percent}%`;
 }
